@@ -1,0 +1,26 @@
+#!/bin/sh
+
+case "$1" in
+  'start')
+    /data/app/nginx/sbin/nginx
+    echo 'nginx started.'
+  ;;
+  'stop')
+    /data/app/nginx/sbin/nginx -s stop
+    echo 'nginx stoped.'
+  ;;
+  'restart')
+    /data/app/nginx/sbin/nginx -s reload
+    echo 'nginx restarted.'
+  ;;
+  'test')
+    /data/app/nginx/sbin/nginx -t
+  ;;
+  'help')
+    /data/app/nginx/sbin/nginx -h
+  ;;
+  *)
+    echo 'Usage: nginxd  {start|stop|restart|test|help}'
+  ;;
+esac
+

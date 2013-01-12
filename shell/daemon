@@ -1,0 +1,6 @@
+#!/bin/sh
+
+/data/app/shell/fpmd start
+/data/app/shell/nginxd start
+/data/app/shell/mysqld start
+/data/app/shell/memcached start

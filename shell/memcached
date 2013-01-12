@@ -1,0 +1,22 @@
+#!/bin/sh
+
+case "$1" in
+  'start')
+    /data/app/memcached/bin/memcached -d -m 128 -P /data/app/run/memcached.pid -u root
+    echo 'memcached started.'
+  ;;
+  'stop')
+    kill -9 `cat /data/app/run/memcached.pid`
+    echo 'memcached stoped.'
+  ;;
+  'restart')
+    kill -9 `cat /data/app/run/memcached.pid`
+    /data/app/memcached/bin/memcached -d -m 128 -P /data/app/run/memcached.pid -u root
+  ;;
+  'help')
+    /data/app/memcached/bin/memcached -h
+  ;;
+  *)
+    echo 'Usage: memcached  {start|stop|restart|help}'
+  ;;
+esac

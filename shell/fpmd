@@ -1,0 +1,26 @@
+#!/bin/sh
+
+case "$1" in
+  'start')
+    /data/app/php/sbin/php-fpm
+    echo 'fpmd started.'
+  ;;
+  'stop')
+    kill -QUIT `cat /data/app/run/php-fpm.pid`
+    echo 'fpmd stoped.'
+  ;;
+  'restart')
+    kill -USR2 `cat /data/app/run/php-fpm.pid`
+    echo 'fpmd restarted.'
+  ;;
+  'test')
+    /data/app/php/sbin/php-fpm -t
+  ;;
+  'help')
+    /data/app/php/sbin/php-fpm -h
+  ;;
+  *)
+    echo 'Usage: fpmd  {start|stop|restart|test|help}'
+  ;;
+esac
+
